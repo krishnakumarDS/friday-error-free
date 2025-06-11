@@ -1,0 +1,34 @@
+// AI-themed color palette
+:root {
+  // Primary colors
+  --primary-dark: #2D3142;    // Deep space blue
+  --primary: #7209B7;         // Vibrant purple
+  --primary-light: #B5179E;   // Bright magenta
+
+  // Secondary colors
+  --secondary: #3A0CA3;       // Deep blue
+  --secondary-light: #4361EE;  // Electric blue
+
+  // Accent colors
+  --accent: #4CC9F0;         // Cyan
+  --accent-light: #72DDF7;   // Light cyan
+
+  // Background colors
+  --bg-dark: #1A1B26;        // Dark background
+  --bg-light: #F8F9FA;       // Light background
+  --bg-card: #FFFFFF;        // Card background
+
+  // Text colors
+  --text-dark: #2D3142;      // Dark text
+  --text-light: #FFFFFF;     // Light text
+  --text-muted: #6C757D;     // Muted text
+
+  // Status colors
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --error: #F44336;
+
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
+}
