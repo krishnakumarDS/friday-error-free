@@ -8,12 +8,13 @@ import "./plumbing-analyzer.scss";
 import { useEffect, useState } from "react";
 
 export function JarvisAssistant() {
-  const { client, connected, setConfig } = useLiveAPIContext();
+  const { client, connected, setConfig, connect } = useLiveAPIContext();
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-  // Set initial configuration and welcome message
+  // Set initial configuration immediately
   useEffect(() => {
-    if (connected && client) {
+    if (!isInitialized && client) {
       const config: LiveConfig = {
         model: "models/gemini-2.0-flash-exp",
         generationConfig: {
@@ -77,15 +78,20 @@ export function JarvisAssistant() {
       };
 
       setConfig(config);
+      setIsInitialized(true);
+    }
+  }, [client, setConfig, isInitialized]);
 
+  // Handle connection and welcome message
+  useEffect(() => {
+    if (connected && isInitialized) {
       const welcomeMessage: Message = {
         type: "ai",
         content: "Hello, sir. I'm FRIDAY – your personal AI assistant. Voice-ready, visually enhanced, and fully operational. What would you like me to handle first today?"
       };
-
       setMessages([welcomeMessage]);
     }
-  }, [connected, client, setConfig]);
+  }, [connected, isInitialized]);
 
   // Handle AI responses
   useEffect(() => {
