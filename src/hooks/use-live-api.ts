@@ -90,9 +90,8 @@ export function useLiveAPI({
   }, [client]);
 
   const connect = useCallback(async () => {
-    console.log(config);
-    if (!config) {
-      throw new Error("config has not been set");
+    if (!config || !config.systemInstruction) {
+      throw new Error("Jarvis configuration has not been set");
     }
     client.disconnect();
     await client.connect(config);
